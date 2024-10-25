@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -6,10 +5,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// import { ModeToggle } from "@/components/ui/mode-toggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CircleUser, Menu, Package2, Search } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { SearchInput } from "./search-input";
 
 export async function Header() {
   return (
@@ -71,15 +71,17 @@ export async function Header() {
       <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
         <form
           action={async (formData) => {
-           
+            "use server";
+            const search = formData.get("search");
+            redirect(`/search?q=${search}`);
           }}
           className="ml-auto flex-1 sm:flex-initial"
         >
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <SearchInput />
           </div>
         </form>
-        {/* <ModeToggle /> */}
 
         <AccountMenu />
       </div>
@@ -89,7 +91,11 @@ export async function Header() {
 
 async function AccountMenu() {
   return (
-    <form action={async () => {}}>
+    <form
+      action={async () => {
+        "use server";
+      }}
+    >
       <Button type="submit">Sign in</Button>
     </form>
   );
@@ -104,7 +110,11 @@ async function AccountMenu() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem>
-          <form action={async () => {}}>
+          <form
+            action={async () => {
+              "use server";
+            }}
+          >
             <button type="submit">Sign out</button>
           </form>
         </DropdownMenuItem>
