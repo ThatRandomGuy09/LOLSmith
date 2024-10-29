@@ -1,6 +1,6 @@
 import { UploadMemeButton } from "@/components/upload-meme-button";
-
 import ImageKit from "imagekit";
+import { ResultsList } from "@/components/results-list";
 import { unstable_noStore } from "next/cache";
 
 const imagekit = new ImageKit({
@@ -25,6 +25,7 @@ export default async function SearchPage({
         <h1 className="text-4xl font-bold">Search Results</h1>
         <UploadMemeButton />
       </div>
+      <ResultsList files={files} counts={[]} />
     </div>
   );
 }
