@@ -1,4 +1,5 @@
 "use client";
+import { urlEndpoint } from "@/providers/providers";
 import { IKImage, ImageKitProvider, IKUpload } from "imagekitio-next";
 import { useState } from "react";
 
@@ -22,7 +23,6 @@ const authenticator = async () => {
   }
 };
 
-const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
 export default function Home() {
   const [filePath, setFilePath] = useState("");
   return (
