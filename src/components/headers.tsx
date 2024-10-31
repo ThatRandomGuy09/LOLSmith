@@ -10,6 +10,7 @@ import { CircleUser, Menu, Package2, Search } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SearchInput } from "./search-input";
+import { ModeToggle } from "./ui/toggle-mode";
 
 export async function Header() {
   return (
@@ -82,6 +83,7 @@ export async function Header() {
             <SearchInput />
           </div>
         </form>
+        <ModeToggle />
 
         <AccountMenu />
       </div>
