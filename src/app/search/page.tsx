@@ -2,12 +2,7 @@ import { UploadMemeButton } from "@/components/upload-meme-button";
 import ImageKit from "imagekit";
 import { ResultsList } from "@/components/results-list";
 import { unstable_noStore } from "next/cache";
-
-const imagekit = new ImageKit({
-  publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
-  privateKey: process.env.PRIVATE_KEY!,
-  urlEndpoint: process.env.NEXT_PUBLIC_URL_ENDPOINT!,
-});
+import { imagekit } from "@/lib/image-kit";
 
 export default async function SearchPage({
   searchParams,
