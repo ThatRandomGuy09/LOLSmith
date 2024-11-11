@@ -5,14 +5,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ModeToggle } from "../components/ui/toggle-mode";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CircleUser, Menu, Package2, Search } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { SearchInput } from "./search-input";
-import { ModeToggle } from "./ui/toggle-mode";
+import { SearchInput } from "../components/search-input";
+import { auth, signIn, signOut } from "@/auth";
 
 export async function Header() {
+  const session = await auth();
+
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -29,13 +32,14 @@ export async function Header() {
         >
           Browse
         </Link>
-
-        <Link
-          href="/favorites"
-          className="text-muted-foreground hover:text-foreground"
-        >
-          Favorites
-        </Link>
+        {session && (
+          <Link
+            href="/favorites"
+            className="text-muted-foreground hover:text-foreground"
+          >
+            Favorites
+          </Link>
+        )}
       </nav>
       <Sheet>
         <SheetTrigger asChild>
@@ -60,12 +64,14 @@ export async function Header() {
               Browse
             </Link>
 
-            <Link
-              href="/favorites"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Favorites
-            </Link>
+            {session && (
+              <Link
+                href="/favorites"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Favorites
+              </Link>
+            )}
           </nav>
         </SheetContent>
       </Sheet>
@@ -92,34 +98,41 @@ export async function Header() {
 }
 
 async function AccountMenu() {
-  return (
-    <form
-      action={async () => {
-        "use server";
-      }}
-    >
-      <Button type="submit">Sign in</Button>
-    </form>
-  );
+  const session = await auth();
 
-  //   <DropdownMenu>
-  //     <DropdownMenuTrigger asChild>
-  //       <Button variant="secondary" size="icon" className="rounded-full">
-  //         <CircleUser className="h-5 w-5" />
-  //         <span className="sr-only">Toggle user menu</span>
-  //       </Button>
-  //     </DropdownMenuTrigger>
-  //     <DropdownMenuContent align="end">
-  //       <DropdownMenuItem>
-  //         <form
-  //           action={async () => {
-  //             "use server";
-  //           }}
-  //         >
-  //           <button type="submit">Sign out</button>
-  //         </form>
-  //       </DropdownMenuItem>
-  //     </DropdownMenuContent>
-  //   </DropdownMenu>
-  // );
+  if (!session) {
+    return (
+      <form
+        action={async () => {
+          "use server";
+          await signIn();
+        }}
+      >
+        <Button type="submit">Sign in</Button>
+      </form>
+    );
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="secondary" size="icon" className="rounded-full">
+          <CircleUser className="h-5 w-5" />
+          <span className="sr-only">Toggle user menu</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem>
+          <form
+            action={async () => {
+              "use server";
+              await signOut();
+            }}
+          >
+            <button type="submit">Sign out</button>
+          </form>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 }
