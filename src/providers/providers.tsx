@@ -1,9 +1,9 @@
 "use client";
-
 import { ImageKitProvider } from "imagekitio-next";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
+
 const authenticator = async () => {
   try {
     const response = await fetch("http://localhost:3000/api/auth");
