@@ -22,6 +22,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.7.3",
     "@neondatabase/serverless": "^0.10.3",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
@@ -40,7 +41,9 @@
     "lodash": "^4.17.21",
     "lucide-react": "^0.453.0",
     "next": "^14.2.16",
+    "next-auth": "^5.0.0-beta.25",
     "next-themes": "^0.3.0",
+    "postgres": "^3.4.5",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
