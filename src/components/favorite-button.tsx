@@ -6,7 +6,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
+import { toggleFavoriteMemeAction } from "../actions/action";
 import { HeartFilledIcon } from "@radix-ui/react-icons";
 
 export function FavoriteButton({
@@ -24,7 +24,14 @@ export function FavoriteButton({
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <form>
+          <form
+            action={toggleFavoriteMemeAction.bind(
+              null,
+              fileId,
+              filePath,
+              pathToRevalidate
+            )}
+          >
             <Button type="submit" variant="outline">
               {isFavorited ? <HeartFilledIcon /> : <Heart />}
             </Button>
