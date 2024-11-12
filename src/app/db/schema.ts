@@ -5,6 +5,7 @@ import {
   text,
   primaryKey,
   integer,
+  uniqueIndex,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 
@@ -84,3 +85,12 @@ export const authenticators = pgTable(
     }),
   })
 );
+
+export const favorites = pgTable("favorite", {
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  memeId: text("memeId").notNull(),
+});
+
+
