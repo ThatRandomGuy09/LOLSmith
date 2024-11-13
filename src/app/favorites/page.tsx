@@ -26,7 +26,7 @@ export default async function FavouritesPage() {
           />
           <p>You have not favorited any memes!</p>
           <Button asChild>
-            <Link href="/search?q=">Find some Memes</Link>
+            <Link href="/">Find some Memes</Link>
           </Button>
         </Card>
       )}

@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ModeToggle } from "@/components/ui/toggle-mode";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { CircleUser, Menu, Package2, Search } from "lucide-react";
+import { CircleUser, Menu, Package2 } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, signIn, signOut } from "@/auth";
@@ -26,7 +26,7 @@ export async function Header() {
           <span className="sr-only">Acme Inc</span>
         </Link>
         <Link
-          href="/search?q="
+          href="/"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           Browse
@@ -57,7 +57,7 @@ export async function Header() {
               <span className="sr-only">Acme Inc</span>
             </Link>
             <Link
-              href="/search?q="
+              href="/"
               className="text-muted-foreground hover:text-foreground"
             >
               Browse
@@ -78,8 +78,7 @@ export async function Header() {
         <form
           action={async (formData) => {
             "use server";
-            const search = formData.get("search");
-            redirect(`/search?q=${search}`);
+            redirect("/");
           }}
           className="ml-auto flex-1 sm:flex-initial"
         ></form>
