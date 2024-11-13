@@ -44,7 +44,7 @@ export function CustomizePanel({
           [`text${index}`]: {
             raw: `l-text,i-${text ?? " "},${
               bgColor ? `bg-${bgColor},pa-10,` : ""
-            }fs-50,ly-bw_mul_${y.toFixed(2)},lx-bw_mul_${x.toFixed(2)},l-end`,
+            }fs-20,ly-bw_mul_${y.toFixed(2)},lx-bw_mul_${x.toFixed(2)},l-end`,
           },
         }));
       },
