@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { FileObject } from "imagekit/dist/libs/interfaces";
@@ -192,6 +191,7 @@ export function CustomizePanel({
                   sharpen ? { raw: "e-sharpen-10" } : undefined,
                   grayscale ? { raw: "e-grayscale" } : undefined,
                   ...textTransformationsArray,
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 ].filter(Boolean) as any
               }
             />
