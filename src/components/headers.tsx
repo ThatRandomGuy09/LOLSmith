@@ -10,7 +10,6 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CircleUser, Menu, Package2, Search } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { SearchInput } from "./search-input";
 import { auth, signIn, signOut } from "@/auth";
 
 export async function Header() {
@@ -83,12 +82,7 @@ export async function Header() {
             redirect(`/search?q=${search}`);
           }}
           className="ml-auto flex-1 sm:flex-initial"
-        >
-          <div className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <SearchInput />
-          </div>
-        </form>
+        ></form>
         <ModeToggle />
 
         <AccountMenu />

@@ -1,6 +1,6 @@
 import { inArray } from "drizzle-orm";
-import { db } from "../db/db";
-import { favoriteCounts } from "../db/schema";
+import { db } from "../app/db/db";
+import { favoriteCounts } from "../app/db/schema";
 
 export async function getFavoriteCounts(fileIds: string[]) {
   const counts = await db
