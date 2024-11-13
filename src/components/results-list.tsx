@@ -1,5 +1,4 @@
 "use client";
-
 import { FileObject } from "imagekit/dist/libs/interfaces";
 import { IKImage } from "imagekitio-next";
 import {
