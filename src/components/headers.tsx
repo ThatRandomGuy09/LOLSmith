@@ -5,12 +5,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ModeToggle } from "../components/ui/toggle-mode";
+import { ModeToggle } from "@/components/ui/toggle-mode";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CircleUser, Menu, Package2, Search } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { SearchInput } from "../components/search-input";
+import { SearchInput } from "./search-input";
 import { auth, signIn, signOut } from "@/auth";
 
 export async function Header() {
