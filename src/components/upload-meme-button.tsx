@@ -19,7 +19,6 @@ import { useRouter } from "next/navigation";
 import { Spinner } from "./spinner";
 
 export function UploadMemeButton() {
-  
   const uploadInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const [displayName, setDisplayName] = useState("");
